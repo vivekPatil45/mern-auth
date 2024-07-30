@@ -1,19 +1,24 @@
 import express from 'express';
 const app = express();
 import userRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js';
+
 
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO)
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
+    .connect(process.env.MONGO)
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
     console.log(err);
-  });
+});
+
+app.use(express.json());
+
 
 
 app.listen(3000, () => {
@@ -27,3 +32,5 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/api/user', userRoutes);
+app.use("/api/auth", authRoutes)
+
