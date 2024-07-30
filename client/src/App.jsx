@@ -10,7 +10,6 @@ const App = () => {
     return (
         
         <BrowserRouter>
-          <h1 className=" bg-red-500">hiii</h1>
           {/* Header */}
           <Header />
 
