@@ -17,7 +17,7 @@ const Profile = () => {
     const [updateSuccess, setUpdateSuccess] = useState(false);
 
 
-    console.log(formData);
+    
     useEffect(()=>{
         if(image){
             handleFileUpload(image);
@@ -39,7 +39,6 @@ const Profile = () => {
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 setImagePercent(Math.round(progress));
-                console.log("upload is "+progress);
             },
             (error) => {
                 setImageError(true);
