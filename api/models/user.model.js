@@ -14,7 +14,14 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-    }
+    },
+    profilePicture: {
+        type: String,
+        default: function () {
+            const encodedName = encodeURIComponent(this.username);
+            return `https://ui-avatars.com/api/?name=${encodedName}`;
+        },
+    },
 }, {timestamps: true});
 
 const User = mongoose.model('User', userSchema);
