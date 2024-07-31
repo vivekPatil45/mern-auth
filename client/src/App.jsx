@@ -1,6 +1,6 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { About, Home,SignIn,SignUp ,Profile } from "./pages";
-import { Header } from "./components";
+import { Header, PrivateRoute } from "./components";
 
 
 
@@ -18,7 +18,9 @@ const App = () => {
             <Route path='/about' element={<About />} />
             <Route path='/sign-in' element={<SignIn />} />
             <Route path='/sign-up' element={<SignUp />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route element={<PrivateRoute />}>
+              <Route path='/profile' element={<Profile />} />
+            </Route>
           </Routes>
         </BrowserRouter>
     )
